@@ -1,10 +1,12 @@
-const CACHE_NAME = 'louey-tasks-v1';
+const CACHE_NAME = 'louey-tasks-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './screenshot-narrow.png',
+  './screenshot-wide.png'
 ];
 
 self.addEventListener('install', event => {
@@ -40,7 +42,6 @@ self.addEventListener('fetch', event => {
         });
         return response;
       }).catch(() => {
-        // Fallback to index.html for navigation requests when offline
         if (event.request.mode === 'navigate') {
           return caches.match('./index.html');
         }
